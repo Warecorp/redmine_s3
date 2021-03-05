@@ -1,4 +1,4 @@
-require 'aws-sdk-v1'
+require 'aws-sdk'
 
 AWS.config(:ssl_verify_peer => false)
 

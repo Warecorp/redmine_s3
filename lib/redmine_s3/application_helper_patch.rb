@@ -4,7 +4,7 @@ module RedmineS3
       base.send(:include, InstanceMethods)
 
       base.class_eval do
-        unloadable # Send unloadable so it will not be unloaded in development
+        # unloadable # Send unloadable so it will not be unloaded in development
 
         if Rails::VERSION::MAJOR >= 5
           alias_method :thumbnail_tag_without_s3_patch, :thumbnail_tag

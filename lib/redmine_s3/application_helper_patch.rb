@@ -7,7 +7,7 @@ module RedmineS3
         # unloadable # Send unloadable so it will not be unloaded in development
 
         if Rails::VERSION::MAJOR >= 5
-          alias_method :thumbnail_tag_without_s3_patch, :thumbnail_tag
+          # alias_method :thumbnail_tag_without_s3_patch, :thumbnail_tag
           alias_method :thumbnail_tag, :thumbnail_tag_with_s3_patch
         else
           alias_method_chain :thumbnail_tag, :s3_patch

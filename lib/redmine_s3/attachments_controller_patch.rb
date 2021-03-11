@@ -6,11 +6,11 @@ module RedmineS3
 
       # Same as typing in the class
       base.class_eval do
-        unloadable # Send unloadable so it will not be unloaded in development
-        before_action :find_attachment_s3, :only => [:show]
-        before_action :download_attachment_s3, :only => [:download]
+        # unloadable # Send unloadable so it will not be unloaded in development
+        # before_action :find_attachment_s3, :only => [:show]
+        # before_action :download_attachment_s3, :only => [:download]
         before_action :find_thumbnail_attachment_s3, :only => [:thumbnail]
-        before_action :find_editable_attachments_s3, :only => [:edit, :update]
+        # before_action :find_editable_attachments_s3, :only => [:edit, :update]
         skip_before_action :file_readable
       end
     end

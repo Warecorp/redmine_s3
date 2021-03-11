@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-Aws.config(:ssl_verify_peer => false)
+AWS.config(:ssl_verify_peer => false)
 
 module RedmineS3
   class Connection
@@ -37,7 +37,7 @@ module RedmineS3
         options[:s3_endpoint] = self.endpoint unless self.endpoint.nil?
         options[:s3_port] = self.port unless self.port.nil?
         options[:use_ssl] = self.ssl unless self.ssl.nil?
-        @conn = Aws::S3.new(options)
+        @conn = AWS::S3.new(options)
       end
 
       def conn

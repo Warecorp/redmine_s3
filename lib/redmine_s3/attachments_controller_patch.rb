@@ -67,18 +67,23 @@ module RedmineS3
       end
 
       def find_thumbnail_attachment_s3
+        # update_thumb = 'true' == params[:update_thumb]
+        # url          = @attachment.thumbnail_s3(update_thumb: update_thumb)
+        # return render json: {src: url} if update_thumb
+        # return if url.nil?
+        # if RedmineS3::Connection.proxy?
+          # send_data RedmineS3::Connection.get(url, ''),
+                    # :filename => filename_for_content_disposition(@attachment.filename),
+                    # :type => detect_content_type(@attachment),
+                    # :disposition => (@attachment.image? ? 'inline' : 'attachment')
+        # else
+          # redirect_to(url)
+        # end
         update_thumb = 'true' == params[:update_thumb]
         url          = @attachment.thumbnail_s3(update_thumb: update_thumb)
         return render json: {src: url} if update_thumb
         return if url.nil?
-        if RedmineS3::Connection.proxy?
-          send_data RedmineS3::Connection.get(url, ''),
-                    :filename => filename_for_content_disposition(@attachment.filename),
-                    :type => detect_content_type(@attachment),
-                    :disposition => (@attachment.image? ? 'inline' : 'attachment')
-        else
-          redirect_to(url)
-        end
+        redirect_to(url)
       end
     end
   end
